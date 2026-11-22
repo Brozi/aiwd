@@ -102,3 +102,22 @@ JOIN SalesOrderLine sol ON oq.SalesOrderID = sol.SalesOrderID
 JOIN Item i ON sol.ItemID = i.ItemID
 GROUP BY oq.quantity_tier, c.CustomerSegment, i.ItemGroup
 ORDER BY oq.quantity_tier, total_revenue DESC;
+
+-- 5. Find the products with highest profit margins
+SELECT 
+    i.ItemCode,
+    i.ItemName,
+    i.ItemGroup,
+    i.SupplyMode,
+    round(sum(sil.LineTotal), 2) AS total_revenue,
+    round(sum(sil.LineTotal) - sum(sil.Quantity * i.StandardCost), 2) AS gross_profit,
+    -- Margin % comparison across items:
+    round(
+        (sum(sil.LineTotal) - sum(sil.Quantity * i.StandardCost)) 
+        / sum(sil.LineTotal) * 100, 2
+    ) AS gross_margin_pct
+FROM SalesInvoiceLine sil
+JOIN Item i ON sil.ItemID = i.ItemID
+GROUP BY i.ItemCode, i.ItemName, i.ItemGroup, i.SupplyMode
+ORDER BY total_revenue DESC
+LIMIT 15;

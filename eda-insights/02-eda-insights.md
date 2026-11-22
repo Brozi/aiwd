@@ -55,3 +55,11 @@ Version 2 of the insights for Charles River EDA
   The average price of one unit is also the highest in this group
 - The company sells the most and the biggest orders to the
   **wholesale** segment
+
+## Product-level profitability
+
+- Brookside Bench generates high revenue ($1.24M), but the margin is just 33%,
+  making the gross revenue only $411K.
+- Willow Desk generates $1.88M revenue, and it's margin is at 48.3%, making it more profitable to sell.
+- Textiles and Lighting achieve really high margins (above 50% - the highest in the top 15
+  most profitable products)
