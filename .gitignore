@@ -1,0 +1,11 @@
+# Databases and data files
+*.sqlite
+*.sqlite3
+*.db
+*.duckdb
+*.xlsx
+*.csv
+*.parquet
+
+data/*
+!data/README.md
